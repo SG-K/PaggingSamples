@@ -8,6 +8,8 @@ import retrofit2.http.Query
 
 interface PaggingSampleAPi {
 
-    @GET("browse/categories?country=IN&limit=3")
-    fun getCategories() : Call<CategoriesResponse>
+    @GET("browse/categories")
+    suspend fun getCategories(@Query("country") country : String,
+                              @Query("limit") limit : String,
+                              @Query("offset") offset : String) : CategoriesResponse
 }

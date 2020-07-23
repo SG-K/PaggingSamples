@@ -5,8 +5,13 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.paging.map
 import com.example.paggingsample.R
+import com.example.paggingsample.categories.adapter.ReposAdapter
 import com.example.paggingsample.network.CustomResult
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class CategoriesActivity : AppCompatActivity() {
@@ -16,8 +21,25 @@ class CategoriesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        viewmodelConnections()
-        viewmodelGitHuSearch.getReposFromGitHub()
+
+        val adapter = ReposAdapter()
+        imagesRecyclerView?.adapter = adapter
+
+
+//        viewmodelConnections()
+        viewmodelGitHuSearch.scope.launch {
+            viewmodelGitHuSearch.searchRepo().collectLatest {
+                "got into activity collectLatest with size ${it}".print()
+                adapter.submitData(it)
+                adapter.notifyDataSetChanged()
+                it.map {
+
+                    "got into activity collectLatest 2 with size ${it}".print()
+                }
+            }
+
+        }
+//        viewmodelGitHuSearch.getReposFromGitHub()
     }
 
 

@@ -26,7 +26,7 @@ android {
 }
 
 ext {
-    retrofit_version = '2.5.0'
+    retrofit_version = '2.6.0'
     okhttp_version = '3.9.1'
 
     glide_version = "4.8.0"
@@ -46,6 +46,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation "androidx.paging:paging-runtime:$paging_version"
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
 
     // kotlin

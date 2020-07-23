@@ -1,5 +1,6 @@
 package com.example.paggingsample.di
 
+import com.example.paggingsample.network.GithubPagingSource
 import com.example.paggingsample.network.HeaderInterceptor
 import com.example.paggingsample.network.PaggingSampleAPi
 import com.example.paggingsample.network.PaggingSampleRepo
@@ -15,6 +16,7 @@ fun createRetrofitClient() =
 
 val networkModule = module {
     single { createRetrofitClient().create(PaggingSampleAPi::class.java) }
+    single { GithubPagingSource(get()) }
     single { PaggingSampleRepo(get()) }
 }
 
