@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".categories.CategoriesActivity">
 
     <TextView
@@ -17,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/imagesRecyclerView"
+        android:id="@+id/categories_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingStart="20dp"

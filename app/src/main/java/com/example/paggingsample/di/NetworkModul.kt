@@ -1,9 +1,8 @@
 package com.example.paggingsample.di
 
-import com.example.paggingsample.network.GithubPagingSource
 import com.example.paggingsample.network.HeaderInterceptor
-import com.example.paggingsample.network.PaggingSampleAPi
-import com.example.paggingsample.network.PaggingSampleRepo
+import com.example.paggingsample.network.SpotifyAPI
+import com.example.paggingsample.network.SpotifyRepo
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -15,12 +14,11 @@ fun createRetrofitClient() =
     retrofitClient(baseUrl, okHttpClient())
 
 val networkModule = module {
-    single { createRetrofitClient().create(PaggingSampleAPi::class.java) }
-    single { GithubPagingSource(get()) }
-    single { PaggingSampleRepo(get()) }
+    single { createRetrofitClient().create(SpotifyAPI::class.java) }
+    single { SpotifyRepo(get()) }
 }
 
-private const val baseUrl = "https://api.spotify.com/v1/"
+const val baseUrl = "https://api.spotify.com/v1/"
 
 private fun okHttpClient() =
     OkHttpClient.Builder().run {

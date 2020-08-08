@@ -2,17 +2,28 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/colorBlack"
+    android:padding="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/im_categories"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/tv_category"
-        android:textColor="#000000"
+        android:textColor="@color/colorWhite"
         android:textStyle="bold"
-        android:padding="16dp"
+        android:paddingStart="16dp"
         android:text="SAmple"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/im_categories"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

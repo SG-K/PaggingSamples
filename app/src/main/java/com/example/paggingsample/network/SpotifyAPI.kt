@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface PaggingSampleAPi {
+interface SpotifyAPI {
 
     @GET("browse/categories")
     suspend fun getCategories(@Query("country") country : String,

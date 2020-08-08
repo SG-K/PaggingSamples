@@ -24,16 +24,16 @@ data class Categories(@SerializedName("next")
                       @SerializedName("href")
                       val href: String? = "",
                       @SerializedName("items")
-                      val items: List<ItemsItem>?)
+                      val items: List<CategoryItem>?)
 
 
-data class ItemsItem(@SerializedName("name")
+data class CategoryItem(@SerializedName("name")
                      val name: String? = "",
-                     @SerializedName("href")
+                        @SerializedName("href")
                      val href: String? = "",
-                     @SerializedName("id")
+                        @SerializedName("id")
                      val id: String? = "",
-                     @SerializedName("icons")
+                        @SerializedName("icons")
                      val icons: List<IconsItem>?)
 
 
