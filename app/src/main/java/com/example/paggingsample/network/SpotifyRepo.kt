@@ -32,6 +32,30 @@ class SpotifyRepo(private val spotifyAPI: SpotifyAPI) {
                     UIModel.CategoryModel(it) as UIModel
                 }
             }
+            /** Inserting Header */
+            .map {
+                it.insertHeaderItem(UIModel.Header)
+            }
+            /** Inserting seperators */
+            .map {
+                it.insertSeparators<UIModel, UIModel> { before, after ->
+                    when {
+                        shouldSeparate(before, after) -> UIModel.SeparatorModel(
+                            "This is a seperator"
+                        )
+                        // Return null to avoid adding a separator between two items.
+                        else -> null
+                    }
+                }
+            }
+
+    }
+
+    fun shouldSeparate(before : UIModel?, after : UIModel?) : Boolean{
+
+        return before != null && after != null && before is UIModel.CategoryModel && after is UIModel.CategoryModel &&
+                (before as UIModel.CategoryModel)?.item?.name?.contains("Top Lists") == true &&
+                (after as UIModel.CategoryModel)?.item?.name?.contains("At Home") == true
 
     }
 
